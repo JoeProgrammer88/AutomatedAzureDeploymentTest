@@ -10,6 +10,7 @@ env:
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: AutomatedAzureDeploymentTest
+  DB_CONNECTION_STRING: ${{ secrets.DatabaseConnectionString }}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -38,7 +39,7 @@ jobs:
         dotnet new tool-manifest
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update -p AutomatedAzureDeploymentTest
+        dotnet ef database update -p AutomatedAzureDeploymentTest --connection "${{ env.DB_CONNECTION_STRING }}"
     - name: Publish Artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
