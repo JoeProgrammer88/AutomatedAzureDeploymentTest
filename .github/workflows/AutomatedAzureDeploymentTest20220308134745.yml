@@ -1,8 +1,7 @@
-name: Build and deploy .NET Core app to Linux WebApp AutomatedAzureDeploymentTest20220308134745
+name: Build and deploy .NET Core app to Linux WebApp AutomatedAzureDeploymentTest
 on:
-  push:
-    branches:
-    - main
+  workflow_dispatch:
+  
 env:
   AZURE_WEBAPP_NAME: AutomatedAzureDeploymentTest20220308134745
   AZURE_WEBAPP_PACKAGE_PATH: AutomatedAzureDeploymentTest/publish
