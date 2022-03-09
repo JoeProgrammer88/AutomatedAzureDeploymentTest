@@ -68,5 +68,11 @@ jobs:
 Modify the workflow (.yml) file and include the Run Code First Migrations step. Make sure you change the "AutomatedAzureDeploymentTest" to your project name.
 
 Next we will place the database connection string into GitHub Secrets. On GitHub, navigate to Settings > Secrets > Actions and click the "New repository secret" button.
-
 The secret name must match the env variable secret name. In the script above it is ${{ secrets.DatabaseConnectionString }}. The secret would be called "DatabaseConnectionString" and the value would be whatever your target database connection string is that your EF Database Context would need to use
+
+## Resources
+The publish profile can also be downloaded directly from Azure
+https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md
+
+If there is an error about Kudu URL during publishing the site
+https://stackoverflow.com/questions/64518967/azure-github-app-deployment-error-publish-profile-does-not-contain-kudu-url
