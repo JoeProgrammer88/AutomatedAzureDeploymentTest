@@ -5,7 +5,11 @@ This repo is used to demonstrate publishing an ASP.NET Core website to Azure usi
 Test thoroughly! Applying migrations on a production database without proper testing is dangerous!
 
 ## Process
-Initially, publish the website to Azure using Build > Publish, within VS 2022. Choose GitHub Actions as your deployment type when presented with the option. VS will create an action (.yml) file and it can be pushed to GitHub.
+Initially, publish the website to Azure using Build > Publish, within VS 2022. Choose GitHub Actions as your deployment type when presented with the option.
+
+![DeploymentOption](screenshots/Publish_GitHubActions_DeploymentType.png)
+
+ VS will create an action (.yml) file and it can be pushed to GitHub.
 Afterwards the publish is complete your VS publish will look like:
 ![VS Publish Screen](screenshots/VS2022_Publish_Option.png)
 **ignore the cancelled run portion in red**
@@ -64,4 +68,5 @@ jobs:
 Modify the workflow (.yml) file and include the Run Code First Migrations step. Make sure you change the "AutomatedAzureDeploymentTest" to your project name.
 
 Next we will place the database connection string into GitHub Secrets. On GitHub, navigate to Settings > Secrets > Actions and click the "New repository secret" button.
+
 The secret name must match the env variable secret name. In the script above it is ${{ secrets.DatabaseConnectionString }}. The secret would be called "DatabaseConnectionString" and the value would be whatever your target database connection string is that your EF Database Context would need to use
